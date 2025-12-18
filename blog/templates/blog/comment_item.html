@@ -1,0 +1,39 @@
+<div class="comment-node {% if comment.parent %}reply{% endif %}">
+    <div class="comment-header">
+        <div class="author">
+            <strong class="author-name">{{ comment.author }}</strong>
+            {% if comment.parent %}
+                <span class="mention-badge">@{{ comment.parent.author }}</span>
+            {% endif %}
+        </div>
+        <span class="comment-time">{{ comment.created_date|date:"d M, H:i" }}</span>
+    </div>
+
+    <div class="comment-body">
+        {{ comment.text|linebreaksbr }}
+    </div>
+
+    <div class="reaction-bar">
+        <button onclick="sendReaction({{ comment.pk }}, 'like', this)">👍 <span>{{ comment.reaction_like }}</span></button>
+        <button onclick="sendReaction({{ comment.pk }}, 'love', this)">❤️ <span>{{ comment.reaction_love }}</span></button>
+        <button onclick="sendReaction({{ comment.pk }}, 'haha', this)">😂 <span>{{ comment.reaction_haha }}</span></button>
+        <button onclick="sendReaction({{ comment.pk }}, 'wow', this)">😮 <span>{{ comment.reaction_wow }}</span></button>
+        <button onclick="sendReaction({{ comment.pk }}, 'sad', this)">😢 <span>{{ comment.reaction_sad }}</span></button>
+        <button onclick="sendReaction({{ comment.pk }}, 'angry', this)">😡 <span>{{ comment.reaction_angry }}</span></button>
+    </div>
+
+    <div class="comment-actions">
+        <a href="{% url 'reply_to_comment' pk=comment.pk %}">Balas</a>
+        {% if user.is_authenticated %}
+            <a href="{% url 'remove_comment' pk=comment.pk %}" onclick="return confirm('Hapus komentar ini?')">Hapus</a>
+        {% endif %}
+    </div>
+
+    {% if comment.replies.all %}
+        <div class="replies-container">
+            {% for reply in comment.replies.all %}
+                {% include "blog/comment_item.html" with comment=reply %}
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>

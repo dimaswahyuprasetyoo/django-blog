@@ -1,0 +1,43 @@
+# Python
+*.pyc
+*~
+__pycache__
+
+# Env
+.env
+myvenv/
+myenv/
+venv/
+env/
+ENV/
+.venv
+
+# Database (Kita ingin db di server berbeda dengan lokal)
+db.sqlite3
+db.sqlite3-journal
+
+# Django
+*.log
+local_settings.py
+
+# Media (Gambar hasil upload user biasanya tidak ikut dicommit ke git dasar)
+# Namun untuk latihan awal, jika ingin gambar ikut terupload, baris bawah ini bisa dihapus/dikomentari (#)
+/media
+
+# Static folder at project root
+/static/
+
+# macOS & Windows system files
+._*
+.DS_Store
+.fseventsd
+.Spotlight-V100
+Thumbs.db*
+ehthumbs*.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Visual Studio Code
+.vscode/
+.history/
+*.code-workspace

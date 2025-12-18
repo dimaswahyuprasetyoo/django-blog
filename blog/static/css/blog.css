@@ -1,0 +1,333 @@
+/* =========================================
+   THEME: MODERN GLASS (VISION PRO STYLE)
+   ========================================= */
+
+/* --- IMPORTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+
+:root {
+    --primary-color: #0A84FF;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --font-heading: 'Montserrat', sans-serif;
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.7);
+}
+
+/* --- DASAR --- */
+body {
+    background-color: #050505;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(10, 132, 255, 0.15), transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 150, 0.1), transparent 40%);
+    color: var(--text-primary);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    min-height: 100vh;
+    padding-left: 0; margin: 0;
+}
+
+/* --- HEADER --- */
+.page-header {
+    background: rgba(20, 20, 20, 0.8);
+    backdrop-filter: blur(20px);
+    border-bottom: var(--glass-border);
+    padding: 25px 40px;
+    margin-bottom: 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    position: sticky; top: 0; z-index: 1000;
+}
+
+.page-header h1 a {
+    font-family: var(--font-heading);
+    font-weight: 800; font-size: 2.5rem; text-transform: uppercase; text-decoration: none;
+    background: linear-gradient(to right, #fff, #0A84FF);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+}
+
+.top-menu { color: #fff; font-weight: 600; text-decoration: none; margin-left: 20px; }
+.top-menu:hover { color: var(--primary-color); }
+
+/* --- POST LIST (GRID) --- */
+.thumbnail.card-glass {
+    background: var(--glass-bg); backdrop-filter: blur(10px);
+    border: var(--glass-border); border-radius: 15px;
+    overflow: hidden; transition: all 0.4s ease;
+    display: flex; flex-direction: column; height: 100%;
+}
+.thumbnail.card-glass:hover { transform: translateY(-10px); border-color: rgba(10, 132, 255, 0.5); }
+
+.image-wrapper { height: 200px; width: 100%; overflow: hidden; position: relative; flex-shrink: 0; }
+.image-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.thumbnail.card-glass:hover .image-wrapper img { transform: scale(1.1); }
+.date-badge { position: absolute; top: 15px; left: 15px; background: rgba(0,0,0,0.7); color: #fff; padding: 5px 12px; border-radius: 8px; font-weight: bold; font-size: 0.8rem; }
+
+.caption { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; }
+.caption h3 a { color: #fff; text-decoration: none; font-family: var(--font-heading); font-weight: 700; }
+.caption h3 a:hover { color: var(--primary-color); }
+.post-preview { color: rgba(255,255,255,0.6); flex-grow: 1; margin-bottom: 20px; }
+.card-footer { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 15px; display: flex; justify-content: space-between; margin-top: auto; }
+.btn-glass { background: linear-gradient(45deg, #0A84FF, #0055b3); color: white; border: none; border-radius: 20px; padding: 6px 20px; font-weight: 600; text-decoration: none; }
+
+/* =========================================
+   --- NEW: POST DETAIL & COMMENTS --- 
+   ========================================= */
+
+/* 1. KARTU DETAIL UTAMA */
+.post-detail-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+/* Header Gambar di Detail */
+.detail-image-header { position: relative; width: 100%; height: 400px; overflow: hidden; }
+.detail-image-header img { width: 100%; height: 100%; object-fit: cover; }
+.detail-title-overlay {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    padding: 40px; color: #fff;
+}
+.detail-no-image-header { padding: 40px; border-bottom: var(--glass-border); }
+
+.detail-date { background: var(--primary-color); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold; text-transform: uppercase; }
+.post-detail-card h1 { font-family: var(--font-heading); font-size: 3rem; margin: 15px 0; font-weight: 800; }
+.detail-author { color: rgba(255,255,255,0.7); font-style: italic; }
+
+.detail-content { padding: 40px; font-size: 1.1rem; line-height: 1.8; color: #eee; }
+.btn-glass-sm { border: 1px solid rgba(255,255,255,0.3); padding: 5px 15px; border-radius: 15px; color: #aaa; text-decoration: none; font-size: 0.9rem; }
+.btn-glass-sm:hover { background: #fff; color: #000; }
+
+/* 2. STYLE KOMENTAR (MENTION LOOK) */
+.comments-wrapper { max-width: 800px; margin: 0 auto; }
+.comments-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px; }
+.btn-new { color: var(--primary-color); border: 1px solid var(--primary-color); padding: 8px 20px; border-radius: 20px; text-decoration: none; }
+
+.comment-thread { display: flex; gap: 15px; margin-bottom: 20px; position: relative; }
+.comment-avatar { width: 40px; height: 40px; background: linear-gradient(135deg, #0A84FF, #0055b3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff; flex-shrink: 0; }
+.comment-avatar.small { width: 30px; height: 30px; font-size: 0.8rem; background: #333; }
+
+.comment-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 15px; border-radius: 15px; flex-grow: 1; }
+.comment-meta { font-size: 0.9rem; color: #aaa; margin-bottom: 8px; display: flex; justify-content: space-between; }
+.comment-meta strong { color: #fff; margin-right: 10px; }
+
+/* Style Balasan (Reply) */
+.comment-thread.reply { margin-left: 50px; margin-top: -10px; }
+.reply-connector {
+    position: absolute; left: -25px; top: -20px; width: 20px; height: 40px;
+    border-left: 2px solid rgba(255,255,255,0.1); border-bottom: 2px solid rgba(255,255,255,0.1);
+    border-bottom-left-radius: 10px;
+}
+.badge-reply { background: rgba(255,255,255,0.1); padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; color: var(--primary-color); }
+
+/* Action Bar di Bawah Komentar */
+.comment-actions { margin-top: 10px; display: flex; align-items: center; gap: 15px; font-size: 0.85rem; }
+.action-link { color: #666; text-decoration: none; font-weight: 600; cursor: pointer; transition: color 0.2s; }
+.action-link:hover { color: #fff; }
+.text-danger:hover { color: #ff4d4d; }
+
+/* 3. REACTION POP-UP (THE MAGIC PART) */
+.reaction-container { position: relative; margin-left: auto; /* Dorong ke kanan */ }
+
+/* Tombol Pemicu (Trigger) */
+.react-trigger-btn {
+    background: transparent; border: none; color: #888; cursor: pointer;
+    font-size: 1.1rem; padding: 2px 8px; border-radius: 10px; transition: all 0.2s;
+}
+.react-trigger-btn:hover { background: rgba(255,255,255,0.1); color: #fff; }
+.total-likes { font-size: 0.8rem; font-weight: bold; margin-left: 5px; }
+
+/* Menu Pop-up (Awalnya Sembunyi) */
+.reaction-popup {
+    display: none; /* Sembunyi */
+    position: absolute; bottom: 100%; right: 0;
+    background: #222; border: 1px solid #444; border-radius: 50px;
+    padding: 5px 10px; gap: 5px; box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+    white-space: nowrap; z-index: 10;
+    animation: popUpAnim 0.2s ease-out;
+}
+
+/* Munculkan saat Container di-Hover */
+.reaction-container:hover .reaction-popup { display: flex; }
+
+/* Tombol Emoji di dalam Pop-up */
+.reaction-popup button {
+    background: transparent; border: none; font-size: 1.2rem; cursor: pointer;
+    transition: transform 0.2s; padding: 0 5px;
+}
+.reaction-popup button:hover { transform: scale(1.4); }
+.reaction-popup .c { font-size: 0.6rem; color: #aaa; display: block; line-height: 0.8; }
+
+@keyframes popUpAnim {
+    from { opacity: 0; transform: translateY(10px) scale(0.8); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* --- LOGIN PAGE --- */
+.login-container {
+    max-width: 500px; margin: 60px auto;
+    background: rgba(255,255,255,0.05); backdrop-filter: blur(20px);
+    padding: 50px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1); text-align: center;
+}
+.login-title { font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 30px; color: #fff; }
+input { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); color: #fff; padding: 15px; border-radius: 10px; width: 100%; margin-bottom: 20px; }
+.login-btn { width: 100%; padding: 15px; background: var(--primary-color); color: white; border: none; border-radius: 10px; font-size: 1.2rem; font-weight: bold; cursor: pointer; }
+
+/* =========================================
+   --- ADD COMMENT FORM STYLES --- 
+   ========================================= */
+
+/* Container Kaca untuk Form */
+.form-glass-container {
+    max-width: 600px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.05); /* Transparan Gelap */
+    backdrop-filter: blur(20px);            /* Efek Blur */
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    color: #fff;
+}
+
+/* Judul Form */
+.form-title {
+    font-family: var(--font-heading); /* Font Montserrat */
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 5px;
+    background: linear-gradient(to right, #fff, #0A84FF);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-subtitle {
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+
+/* Label & Input */
+.form-group {
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--primary-color);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Style untuk Input Teks DAN Textarea (Agar tidak putih) */
+.modern-form input[type="text"],
+.modern-form textarea {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.3) !important; /* Latar Gelap */
+    border: 1px solid rgba(255, 255, 255, 0.2) !important;
+    color: #fff !important; /* Teks Putih */
+    padding: 15px;
+    border-radius: 12px;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    font-size: 1rem;
+    outline: none;
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Agar padding tidak merusak lebar */
+}
+
+.modern-form textarea {
+    min-height: 150px; /* Tinggi minimal kotak komentar */
+    resize: vertical;
+}
+
+/* Efek Fokus */
+.modern-form input:focus,
+.modern-form textarea:focus {
+    border-color: var(--primary-color) !important;
+    background: rgba(0, 0, 0, 0.5) !important;
+    box-shadow: 0 0 15px rgba(10, 132, 255, 0.2);
+}
+
+/* Tombol Group */
+.button-group {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+/* Tombol Kirim (Biru) */
+.btn-glass-submit {
+    flex: 2; /* Lebih lebar */
+    padding: 15px;
+    background: linear-gradient(45deg, #0A84FF, #0055b3);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: transform 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+
+.btn-glass-submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 20px rgba(10, 132, 255, 0.4);
+}
+
+/* Tombol Batalkan (Merah Transparan) */
+.btn-glass-cancel {
+    flex: 1; /* Lebih kecil */
+    padding: 15px;
+    background: rgba(255, 59, 48, 0.15); /* Merah Transparan */
+    border: 1px solid rgba(255, 59, 48, 0.3);
+    color: #ff4d4d;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+    transition: all 0.2s;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+
+.btn-glass-cancel:hover {
+    background: rgba(255, 59, 48, 0.3);
+    color: #fff;
+    text-decoration: none;
+}
+
+/* --- TWEAK UNTUK POST EDITOR --- */
+
+/* Memastikan iframe TinyMCE tidak terlalu mepet */
+.django-tinymce {
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+
+/* Memperbaiki tampilan input file (Gambar Header) */
+input[type="file"] {
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 10px;
+    color: #aaa;
+    width: 100%;
+    cursor: pointer;
+}
+input[type="file"]::-webkit-file-upload-button {
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 15px;
+}

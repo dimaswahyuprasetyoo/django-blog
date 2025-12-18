@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="id">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Django Blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    </head>
+    <body>
+        <div class="page-header">
+            <div style="float: right;">
+                {% if user.is_authenticated %}
+                    <span class="top-menu" style="font-weight: normal; font-size: 14pt;">Hello {{ user.username }} (<a href="{% url 'logout' %}" style="color: #337ab7;">Log out</a>)</span>
+                    <a href="{% url 'post_new' %}" class="top-menu" style="border: 1px solid #fff; padding: 5px 10px; border-radius: 4px;">+ New</a>
+                {% else %}
+                    <a href="{% url 'login' %}" class="top-menu">Login</a>
+                {% endif %}
+            </div>
+            
+            <h1><a href="/">Django Blog</a></h1>
+        </div>
+        
+        <div class="container">
+            {% block content %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

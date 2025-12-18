@@ -1,0 +1,47 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <div class="form-glass-container" style="max-width: 900px;"> {% if post %}
+            <h2 class="form-title">Edit Postingan</h2>
+            <p class="form-subtitle">Perbarui konten artikel Anda di bawah ini.</p>
+        {% else %}
+            <h2 class="form-title">Buat Postingan Baru</h2>
+            <p class="form-subtitle">Bagikan ide menarik Anda kepada dunia.</p>
+        {% endif %}
+        
+        <form method="POST" class="modern-form" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.media }}
+            
+            {% for field in form %}
+                <div class="form-group">
+                    <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                    
+                    {{ field }}
+                    
+                    {% if field.errors %}
+                        <div class="form-error" style="color: #ff4d4d; font-size: 0.85rem; margin-top: 5px;">
+                            {{ field.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            
+            <div class="button-group">
+                <button type="submit" class="btn-glass-submit">
+                    <span>&#128190;</span> Simpan
+                </button>
+                
+                {% if post %}
+                    <a href="{% url 'post_detail' pk=post.pk %}" class="btn-glass-cancel">
+                        <span>&#10005;</span> Batalkan
+                    </a>
+                {% else %}
+                    <a href="{% url 'post_list' %}" class="btn-glass-cancel">
+                        <span>&#10005;</span> Batalkan
+                    </a>
+                {% endif %}
+            </div>
+        </form>
+    </div>
+{% endblock %}
