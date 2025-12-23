@@ -6,9 +6,22 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
 from django.http import JsonResponse
 
-# --- BAGIAN POSTINGAN (LIST & DETAIL) ---
+# ==========================================
+# BAGIAN BARU: HALAMAN PRODI (LANDING & ABOUT)
+# ==========================================
+
+def landing_page(request):
+    return render(request, 'blog/landing_page.html')
+
+def about_page(request):
+    return render(request, 'blog/about.html')
+
+# ==========================================
+# BAGIAN LAMA: BERITA / BLOG (TIDAK ADA YANG DIHAPUS)
+# ==========================================
 
 def post_list(request):
+    # Halaman ini sekarang akan diakses via /berita/
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
@@ -16,12 +29,9 @@ def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
     return render(request, 'blog/post_detail.html', {'post': post})
 
-# --- BAGIAN ADMIN (NEW & EDIT DENGAN UPLOAD GAMBAR) ---
-
 @login_required
 def post_new(request):
     if request.method == "POST":
-        # request.FILES wajib ada untuk upload gambar
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
@@ -37,7 +47,6 @@ def post_new(request):
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        # request.FILES wajib ada untuk update gambar
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
@@ -49,7 +58,9 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form, 'post': post})
 
-# --- BAGIAN KOMENTAR (ADD, REPLY, REMOVE) ---
+# ==========================================
+# BAGIAN LAMA: KOMENTAR & REAKSI
+# ==========================================
 
 def add_comment_to_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -64,7 +75,6 @@ def add_comment_to_post(request, pk):
         form = CommentForm()
     return render(request, 'blog/add_comment_to_post.html', {'form': form, 'post': post})
 
-# Fungsi ini yang menyebabkan error karena sebelumnya hilang
 @login_required
 def remove_comment(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
@@ -93,18 +103,13 @@ def reply_to_comment(request, pk):
         'parent_comment': parent_comment
     })
 
-# --- BAGIAN REACTION (LIKE, LOVE, DLL) ---
-
 def react_to_comment(request, pk, reaction_type):
-    # Hanya menerima request AJAX/JSON
     comment = get_object_or_404(Comment, pk=pk)
     
-    # Cek Cookies agar tidak spam
     cookie_name = f'reacted_{pk}'
     if request.COOKIES.get(cookie_name):
         return JsonResponse({'status': 'error', 'message': 'Anda sudah bereaksi!'}, status=400)
 
-    # Increment sesuai tipe
     if reaction_type == 'like':
         comment.reaction_like += 1
     elif reaction_type == 'love':
@@ -132,8 +137,6 @@ def react_to_comment(request, pk, reaction_type):
     
     response.set_cookie(cookie_name, 'true', max_age=31536000)
     return response
-
-# --- BAGIAN LOGOUT ---
 
 def custom_logout(request):
     logout(request)

@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="jumbotron text-center" style="background-color: white; border: 1px solid #ddd; padding: 40px;">
+    <h2>Selamat Datang di Website Prodi</h2>
+    <h1>Pendidikan Informatika</h1>
+    <hr>
+    <p class="lead">Mewujudkan Pendidik Generasi Digital yang Berkarakter dan Kompeten.</p>
+    <br>
+    <a href="{% url 'post_list' %}" class="btn btn-primary btn-lg">Lihat Berita Terbaru</a>
+    <a href="{% url 'about_page' %}" class="btn btn-default btn-lg">Profil Prodi</a>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h3>Visi Akademik</h3>
+        <p>Mengembangkan kurikulum berbasis teknologi terkini untuk menghadapi tantangan industri 4.0 di dunia pendidikan.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>Pengajar Profesional</h3>
+        <p>Didukung oleh dosen-dosen berpengalaman dan praktisi ahli di bidang Rekayasa Perangkat Lunak dan Jaringan.</p>
+    </div>
+    <div class="col-md-4">
+        <h3>Fasilitas Lengkap</h3>
+        <p>Laboratorium komputer modern, akses internet cepat, dan ruang pembelajaran multimedia.</p>
+    </div>
+</div>
+{% endblock %}

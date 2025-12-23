@@ -1,38 +1,134 @@
 {% extends "blog/base.html" %}
 
 {% block content %}
-<div class="post"> <h2 class="post-title" style="text-align: center; margin-bottom: 30px;">Login Admin</h2>
+<div class="login-wrapper">
+    <div class="login-card">
+        <h2 class="login-title">Login Admin</h2>
 
-    {% if form.errors %}
-        <p style="color: #ff4d4d; text-align: center;">Username atau password salah. Coba lagi.</p>
-    {% endif %}
+        {% if form.errors %}
+            <div class="error-box">
+                <p>Username atau password salah. Silakan coba lagi.</p>
+            </div>
+        {% endif %}
 
-    <form method="post" action="{% url 'login' %}" class="post-form">
-        {% csrf_token %}
-        
-        <div style="margin-bottom: 20px;">
-            <label style="display: block; color: var(--text-secondary); margin-bottom: 5px;">Username</label>
-            {{ form.username }}
-        </div>
-        
-        <div style="margin-bottom: 30px;">
-            <label style="display: block; color: var(--text-secondary); margin-bottom: 5px;">Password</label>
-            {{ form.password }}
-        </div>
+        <form method="post" action="{% url 'login' %}" class="login-form">
+            {% csrf_token %}
+            
+            <div class="form-group">
+                <label for="{{ form.username.id_for_label }}">Username</label>
+                {{ form.username }}
+            </div>
+            
+            <div class="form-group">
+                <label for="{{ form.password.id_for_label }}">Password</label>
+                {{ form.password }}
+            </div>
 
-        <button type="submit" class="save" style="width: 100%; justify-content: center;">Masuk</button>
-        <input type="hidden" name="next" value="{{ next }}" />
-    </form>
+            <button type="submit" class="login-button">Masuk</button>
+            <input type="hidden" name="next" value="{{ next }}" />
+        </form>
+    </div>
 </div>
 
-<script>
-    document.querySelectorAll('input').forEach(input => {
-        input.style.width = '100%';
-        input.style.background = 'rgba(0,0,0,0.3)';
-        input.style.border = '1px solid rgba(255,255,255,0.1)';
-        input.style.padding = '15px';
-        input.style.color = 'white';
-        input.style.borderRadius = '12px';
-    });
-</script>
+<style>
+    /* 1. Wrapper untuk memusatkan kartu di tengah layar */
+    .login-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Mengurangi tinggi header/navbar jika ada, agar benar-benar di tengah */
+        min-height: calc(100vh - 80px); 
+        padding: 20px;
+    }
+
+    /* 2. Kartu Login Utama */
+    .login-card {
+        background: rgba(30, 30, 45, 0.9); /* Warna latar gelap dan sedikit transparan */
+        padding: 50px 40px;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Bayangan lembut */
+        width: 100%;
+        max-width: 500px; /* Lebar maksimal agar tidak terlalu lebar di layar besar */
+        border: 1px solid rgba(255, 255, 255, 0.05); /* Garis tepi tipis */
+        backdrop-filter: blur(5px); /* Efek blur di belakang kartu (opsional) */
+    }
+
+    /* 3. Judul */
+    .login-title {
+        text-align: center;
+        margin-bottom: 40px;
+        color: #ffffff;
+        font-weight: 700;
+        font-size: 2rem;
+    }
+
+    /* 4. Menata Input Django */
+    /* Kita menargetkan input yang dirender oleh Django */
+    .login-form input[type="text"],
+    .login-form input[type="password"] {
+        width: 100%;
+        background: rgba(0, 0, 0, 0.3); /* Latar input lebih gelap */
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        padding: 15px 20px;
+        color: white;
+        border-radius: 12px;
+        box-sizing: border-box; /* Penting agar padding tidak menambah lebar */
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+    }
+
+    /* Efek saat input diklik/fokus */
+    .login-form input[type="text"]:focus,
+    .login-form input[type="password"]:focus {
+        border-color: rgba(100, 100, 255, 0.5);
+    }
+
+    /* 5. Label dan Grup Form */
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-group label {
+        display: block;
+        color: #b0b0c0; /* Warna teks sekunder (abu-abu terang) */
+        margin-bottom: 10px;
+        font-size: 0.95rem;
+        margin-left: 5px;
+    }
+
+    /* 6. Tombol Masuk */
+    .login-button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        border-radius: 12px;
+        background: #3E3E5E; /* Warna ungu tua tombol */
+        color: white;
+        font-size: 1.1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        margin-top: 20px;
+    }
+
+    .login-button:hover {
+        background: #4E4E6E; /* Sedikit lebih terang saat di-hover */
+    }
+
+    /* 7. Kotak Pesan Error */
+    .error-box {
+        background: rgba(255, 77, 77, 0.15);
+        border: 1px solid rgba(255, 77, 77, 0.3);
+        padding: 15px;
+        border-radius: 12px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    
+    .error-box p {
+        color: #ff6b6b;
+        margin: 0;
+    }
+</style>
 {% endblock %}
