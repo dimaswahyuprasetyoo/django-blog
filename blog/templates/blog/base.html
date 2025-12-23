@@ -4,28 +4,29 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Pendidikan Teknik Informatika FKIP</title>
+        <title>Pendidikan Informatika FKIP</title>
         
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         
         <link href="//fonts.googleapis.com/css?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" type="text/css">
-        
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         
         <style>
-            /* --- UPDATE STYLE --- */
             body { 
                 margin: 0; 
-                padding: 0; 
+                padding: 0;
                 font-family: 'Montserrat', sans-serif;
-                background-color: #f9f9f9; /* Background sedikit abu biar tidak silau */
-                color: #333;
+                /* BACKGROUND GELAP / GAMBAR */
+                background: linear-gradient(rgba(0, 46, 91, 0.85), rgba(0, 0, 0, 0.9)), 
+                            url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+                background-size: cover;
+                color: white; /* Teks Default Putih */
+                min-height: 100vh;
             }
 
-            /* Header Style */
+            /* Header Style Original (Transparan) */
             .page-header {
                 display: flex;
                 justify-content: space-between;
@@ -33,12 +34,10 @@
                 padding: 20px 40px;
                 margin-top: 0;
                 margin-bottom: 40px;
-                background-color: #fff; /* Header putih bersih */
-                border-bottom: 3px solid #f4a000; /* Garis Oranye UMS */
-                box-shadow: 0 2px 10px rgba(0,0,0,0.1); /* Bayangan halus */
+                border-bottom: 1px solid rgba(255,255,255,0.15); /* Border tipis */
+                background: rgba(0,0,0,0.2); /* Sedikit gelap biar menu terbaca */
             }
 
-            /* Branding Kiri */
             .header-branding {
                 display: flex;
                 flex-direction: column;
@@ -46,123 +45,116 @@
 
             .header-branding h1 {
                 margin: 0;
-                font-size: 2.2rem;
+                font-size: 2rem;
                 font-weight: 800;
                 text-transform: uppercase;
                 letter-spacing: 1px;
+                text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             }
 
             .header-branding h1 a {
                 text-decoration: none;
-                color: #002e5b; /* Biru UMS */
-            }
-
-            .header-branding h1 a:hover {
-                color: #004080;
+                color: #fff;
             }
 
             .header-subtitle {
-                color: #f4a000; /* Kuning/Oranye FKIP UMS */
-                font-size: 1rem;
+                color: #f4a000; /* Tetap pakai Oranye UMS biar kontras */
+                font-size: 0.9rem;
                 font-weight: 600;
                 text-transform: uppercase;
                 letter-spacing: 2px;
                 margin-top: 5px;
+                text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
             }
 
-            /* Navigasi Kanan */
             .header-actions {
                 display: flex;
                 align-items: center;
                 gap: 20px;
             }
 
-            /* Menu Links */
+            /* Navigasi Glass Style (Original Code) */
             .nav-pills-glass {
                 display: flex;
-                gap: 10px;
+                gap: 15px;
             }
 
             .nav-pills-glass a {
-                color: #555;
+                color: rgba(255,255,255,0.8);
                 font-weight: 600;
                 text-decoration: none;
-                padding: 10px 20px;
+                padding: 8px 20px;
                 border-radius: 50px;
                 transition: all 0.3s ease;
-                font-size: 1.4rem; /* Ukuran font disesuaikan */
+                font-size: 1.4rem;
                 text-transform: uppercase;
+                border: 1px solid transparent;
             }
 
             .nav-pills-glass a:hover {
-                background-color: #002e5b;
+                background: rgba(255,255,255,0.1);
                 color: #fff;
+                border: 1px solid rgba(255,255,255,0.3);
+                box-shadow: 0 0 15px rgba(255,255,255, 0.1);
             }
 
-            /* Tombol Login */
             .btn-login-big {
-                background: #002e5b; /* Biru UMS */
+                background: linear-gradient(45deg, #0A84FF, #0055b3);
                 color: white !important;
                 padding: 10px 30px;
-                border-radius: 4px;
+                border-radius: 12px;
                 font-weight: bold;
                 font-size: 1.4rem;
                 text-decoration: none;
-                transition: background 0.2s;
-            }
-
-            .btn-login-big:hover {
-                background: #004080;
-                text-decoration: none;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255,255,255,0.2);
             }
 
             .user-info {
+                color: white;
                 font-size: 1.4rem;
                 display: flex;
                 align-items: center;
                 gap: 15px;
             }
-            
-            /* Helper untuk konten About */
-            .box-visimisi {
-                background: #fff;
-                padding: 20px;
-                border-radius: 8px;
-                box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-                margin-bottom: 20px;
-                border-left: 5px solid #002e5b;
+
+            /* Class tambahan buat konten biar kebaca di background gelap */
+            .glass-panel {
+                background: rgba(255, 255, 255, 0.1); /* Putih transparan */
+                backdrop-filter: blur(10px); /* Efek blur (hanya browser modern) */
+                border: 1px solid rgba(255, 255, 255, 0.2);
+                border-radius: 15px;
+                padding: 25px;
+                box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+                color: #fff;
             }
         </style>
     </head>
     
     <body>
         <div class="page-header">
-            
             <div class="header-branding">
                 <h1><a href="{% url 'landing_page' %}">Pendidikan Teknik Informatika</a></h1>
                 <div class="header-subtitle">Fakultas Keguruan dan Ilmu Pendidikan</div>
             </div>
 
             <div class="header-actions">
-                
                 <nav class="nav-pills-glass">
                     <a href="{% url 'landing_page' %}">Home</a>
                     <a href="{% url 'about_page' %}">About</a>
                     <a href="{% url 'post_list' %}">Berita</a>
                 </nav>
 
-                <div style="width: 1px; height: 30px; background: #ddd; margin: 0 15px;"></div>
+                <div style="width: 1px; height: 30px; background: rgba(255,255,255,0.3); margin: 0 10px;"></div>
 
                 {% if user.is_authenticated %}
                     <div class="user-info">
                         <span>Halo, <strong>{{ user.username }}</strong></span>
-                        <a href="{% url 'post_new' %}" class="btn btn-default btn-sm">+ Berita</a>
-                        <a href="{% url 'logout' %}" style="color: #d9534f; font-weight: bold; margin-left: 10px;">Log out</a>
+                        <a href="{% url 'logout' %}" style="color: #ff6b6b; margin-left:10px;">Log out</a>
                     </div>
                 {% else %}
                     <a href="{% url 'login' %}" class="btn-login-big">LOGIN</a>
                 {% endif %}
-                
             </div>
         </div>
         
@@ -170,9 +162,9 @@
             {% block content %}
             {% endblock %}
         </div>
-        
-        <div class="container" style="margin-top: 50px; border-top: 1px solid #ddd; padding: 20px 0; text-align: center; color: #777;">
-            <p>&copy; {% now "Y" %} Pendidikan Teknik Informatika - UMS</p>
+
+        <div class="container text-center" style="margin-top: 50px; padding: 20px; color: rgba(255,255,255,0.5);">
+            &copy; {% now "Y" %} PTI FKIP UMS
         </div>
     </body>
 </html>
