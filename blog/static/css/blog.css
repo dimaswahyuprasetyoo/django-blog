@@ -305,15 +305,12 @@ input { background: rgba(0,0,0,0.3); border: 1px solid rgba(255,255,255,0.2); co
 }
 
 /* --- TWEAK UNTUK POST EDITOR --- */
-
-/* Memastikan iframe TinyMCE tidak terlalu mepet */
 .django-tinymce {
     border-radius: 10px;
     overflow: hidden;
     border: 1px solid rgba(255,255,255,0.2);
 }
 
-/* Memperbaiki tampilan input file (Gambar Header) */
 input[type="file"] {
     background: rgba(255,255,255,0.05);
     padding: 10px;
@@ -330,4 +327,94 @@ input[type="file"]::-webkit-file-upload-button {
     border-radius: 5px;
     cursor: pointer;
     margin-right: 15px;
+}
+
+/* =========================================================
+   NEW: LANDING PAGE & ABOUT (ADAPTASI TEMA)
+   Bagian ini memaksa komponen Bootstrap agar sesuai tema gelap
+   ========================================================= */
+
+/* 1. Paksa Jumbotron Menjadi Transparan & Kaca */
+.jumbotron {
+    background-color: var(--glass-bg) !important; /* Timpa warna putih bawaan */
+    border: var(--glass-border);
+    backdrop-filter: blur(10px);
+    color: #fff !important;
+    border-radius: 20px !important;
+    margin-bottom: 40px;
+}
+.jumbotron h1, .jumbotron h2, .jumbotron h3 {
+    color: #fff !important;
+    font-family: var(--font-heading);
+}
+.jumbotron .lead {
+    color: rgba(255,255,255,0.8);
+}
+
+/* 2. Paksa Thumbnail (Visi/Misi) Menjadi Transparan */
+.thumbnail {
+    background-color: var(--glass-bg) !important;
+    border: var(--glass-border) !important;
+    color: #fff !important;
+    border-radius: 15px;
+    padding: 20px;
+}
+.thumbnail h3 {
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-weight: bold;
+    margin-top: 0;
+}
+.thumbnail p {
+    color: rgba(255,255,255,0.7);
+}
+
+/* 3. Paksa Panel (About Page) Menjadi Transparan */
+.panel {
+    background-color: transparent !important;
+    border: none !important;
+    box-shadow: none;
+}
+.panel-default > .panel-heading,
+.panel-info > .panel-heading {
+    background-color: rgba(10, 132, 255, 0.1) !important; /* Biru transparan */
+    border-bottom: 1px solid rgba(10, 132, 255, 0.3) !important;
+    color: #fff !important;
+    border-radius: 10px 10px 0 0;
+}
+.panel-body {
+    background-color: var(--glass-bg) !important;
+    border: var(--glass-border) !important;
+    border-top: none !important;
+    border-radius: 0 0 10px 10px;
+    color: #eee;
+}
+.panel-title {
+    font-family: var(--font-heading);
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+blockquote {
+    border-left: 5px solid var(--primary-color);
+    font-style: italic;
+    color: rgba(255,255,255,0.8);
+}
+
+/* 4. Perbaikan Menu Navigasi Baru */
+.navbar-custom {
+    background-color: rgba(255,255,255,0.05) !important; /* Hilangkan putih */
+    border-bottom: var(--glass-border) !important;
+    border-radius: 50px;
+    display: inline-block;
+    padding: 10px 30px !important;
+}
+.nav-link {
+    color: rgba(255,255,255,0.7) !important;
+    text-transform: uppercase;
+    font-size: 0.9rem !important;
+    letter-spacing: 1px;
+}
+.nav-link:hover {
+    color: var(--primary-color) !important;
+    text-decoration: none;
 }
