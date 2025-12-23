@@ -1,161 +1,203 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="id">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Pendidikan Informatika FKIP</title>
-        
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        
-        <link href="//fonts.googleapis.com/css?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" type="text/css">
-        <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-        
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
-        
-        <style>
-            /* Reset Margin Body agar Full Screen */
-            body { margin: 0; padding: 0; }
-
-            /* Penataan Ulang Header agar Rapi */
-            .page-header {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 20px 40px;
-                margin-top: 0;
-                margin-bottom: 40px;
-                border-bottom: 1px solid rgba(255,255,255,0.1);
-            }
-
-            /* Container Kiri (Judul & Fakultas) */
-            .header-branding {
-                display: flex;
-                flex-direction: column;
-            }
-
-            .header-branding h1 {
-                margin: 0;
-                font-size: 1.8rem;
-                font-weight: 800;
-                text-transform: uppercase;
-                letter-spacing: 1px;
-            }
-
-            .header-branding h1 a {
-                text-decoration: none;
-                background: linear-gradient(to right, #fff, #0A84FF);
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-            }
-
-            /* Style Baru untuk Teks Fakultas */
-            .header-subtitle {
-                color: #FF9F0A; /* Warna Oranye FKIP */
-                font-size: 0.9rem;
-                font-weight: 600;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-                margin-top: 5px;
-                font-family: 'Montserrat', sans-serif;
-            }
-
-            /* Container Kanan (Menu & Login) */
-            .header-actions {
-                display: flex;
-                align-items: center;
-                gap: 20px;
-            }
-
-            /* Style Menu (Home, About, Berita) menjadi Tombol/Pill */
-            .nav-pills-glass {
-                display: flex;
-                gap: 20px;
-            }
-
-            .nav-pills-glass a {
-                color: rgba(255,255,255,0.8);
-                font-weight: 600;
-                text-decoration: none;
-                padding: 8px 20px;
-                border-radius: 50px;
-                transition: all 0.3s ease;
-                font-size: 2rem;
-                text-transform: uppercase;
-            }
-
-            .nav-pills-glass a:hover {
-                background: rgba(255,255,255,0.1);
-                color: #0A84FF;
-                box-shadow: 0 0 10px rgba(10, 132, 255, 0.3);
-            }
-
-            /* Style Tombol Login yang Digedekan */
-            .btn-login-big {
-                background: linear-gradient(45deg, #0A84FF, #0055b3);
-                color: white !important;
-                padding: 12px 35px; /* Padding lebih besar */
-                border-radius: 12px;
-                font-weight: bold;
-                font-size: 2rem; /* Ukuran font lebih besar */
-                text-decoration: none;
-                box-shadow: 0 4px 15px rgba(10, 132, 255, 0.4);
-                transition: transform 0.2s;
-                border: 1px solid rgba(255,255,255,0.2);
-            }
-
-            .btn-login-big:hover {
-                transform: scale(1.05);
-                box-shadow: 0 6px 20px rgba(10, 132, 255, 0.6);
-                text-decoration: none;
-            }
-
-            /* Style User Info (jika sudah login) */
-            .user-info {
-                color: white;
-                font-size: 2rem;
-                display: flex;
-                align-items: center;
-                gap: 15px;
-            }
-        </style>
-    </head>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pendidikan Teknik Informatika - FKIP UMS</title>
     
-    <body>
-        <div class="page-header">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        :root {
+            --ums-blue: #002e5b; /* Biru UMS */
+            --ums-gold: #f4a000; /* Kuning/Emas UMS */
+            --light-bg: #f8f9fa;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light-bg);
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* NAVBAR STYLING */
+        .navbar {
+            background-color: white;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            color: var(--ums-blue) !important;
+            font-size: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .navbar-brand span {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--ums-gold);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        .nav-link {
+            color: #555 !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: var(--ums-blue) !important;
+            transform: translateY(-2px);
+        }
+
+        /* BUTTONS */
+        .btn-primary-ums {
+            background-color: var(--ums-blue);
+            color: white;
+            border-radius: 50px;
+            padding: 8px 25px;
+            border: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary-ums:hover {
+            background-color: #004080;
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 46, 91, 0.3);
+            color: white;
+        }
+
+        /* MAIN CONTENT CONTAINER */
+        .main-wrapper {
+            flex: 1;
+            padding-top: 30px;
+            padding-bottom: 50px;
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--ums-blue);
+            color: white;
+            padding: 40px 0 20px 0;
+            margin-top: auto;
+        }
+        
+        footer h5 {
+            color: var(--ums-gold);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        footer a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        footer a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'landing_page' %}">
+                PENDIDIKAN TEKNIK INFORMATIKA
+                <span>FKIP UMS</span>
+            </a>
             
-            <div class="header-branding">
-                <h1><a href="{% url 'landing_page' %}">Pendidikan Teknik Informatika</a></h1>
-                <div class="header-subtitle">Fakultas Keguruan dan Ilmu Pendidikan</div>
-            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-            <div class="header-actions">
-                
-                <nav class="nav-pills-glass">
-                    <a href="{% url 'landing_page' %}">Home</a>
-                    <a href="{% url 'about_page' %}">About</a>
-                    <a href="{% url 'post_list' %}">Berita & Artikel</a>
-                </nav>
-
-                <div style="width: 1px; height: 30px; background: rgba(255,255,255,0.2);"></div>
-
-                {% if user.is_authenticated %}
-                    <div class="user-info">
-                        <span>Halo, <strong>{{ user.username }}</strong></span>
-                        <a href="{% url 'post_new' %}" class="btn-glass" style="font-size: 0.9rem; padding: 5px 15px; border: 1px solid #fff; border-radius: 20px;">+ New</a>
-                        <a href="{% url 'logout' %}" style="color: #ff4d4d; font-weight: bold;">Log out</a>
-                    </div>
-                {% else %}
-                    <a href="{% url 'login' %}" class="btn-login-big">LOGIN</a>
-                {% endif %}
-                
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-center">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'landing_page' %}">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'about_page' %}">Profil Prodi</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'post_list' %}">Berita</a>
+                    </li>
+                    
+                    <li class="nav-item ms-lg-3">
+                        {% if user.is_authenticated %}
+                            <div class="dropdown">
+                                <a class="btn btn-outline-primary dropdown-toggle rounded-pill px-4" href="#" role="button" data-bs-toggle="dropdown">
+                                    <i class="fas fa-user-circle me-1"></i> {{ user.username }}
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end shadow border-0">
+                                    <li><a class="dropdown-item" href="{% url 'post_new' %}"><i class="fas fa-plus me-2"></i> Tulis Berita</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item text-danger" href="{% url 'logout' %}"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        {% else %}
+                            <a href="{% url 'login' %}" class="btn btn-primary-ums">
+                                <i class="fas fa-lock me-2"></i> LOGIN
+                            </a>
+                        {% endif %}
+                    </li>
+                </ul>
             </div>
         </div>
-        
+    </nav>
+
+    <div class="main-wrapper">
         <div class="container">
             {% block content %}
             {% endblock %}
         </div>
-    </body>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 mb-4">
+                    <h5>PTI FKIP UMS</h5>
+                    <p class="text-white-50">Menghasilkan tenaga pendidik dan profesional di bidang Teknik Informatika yang Unggul, Islami, dan Berkemajuan.</p>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <h5>Tautan Cepat</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Sistem Akademik (STAR)</a></li>
+                        <li><a href="#">E-Learning (OpenLearning)</a></li>
+                        <li><a href="#">Perpustakaan</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5>Kontak Kami</h5>
+                    <p class="mb-1"><i class="fas fa-map-marker-alt me-2"></i> Jl. A. Yani, Pabelan, Kartasura</p>
+                    <p class="mb-1"><i class="fas fa-phone me-2"></i> (0271) 717417</p>
+                    <p><i class="fas fa-envelope me-2"></i> pti@ums.ac.id</p>
+                </div>
+            </div>
+            <div class="row pt-3 border-top border-secondary">
+                <div class="col-12 text-center text-white-50 small">
+                    &copy; {% now "Y" %} Pendidikan Teknik Informatika UMS. All Rights Reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
