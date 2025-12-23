@@ -65,5 +65,57 @@
     </div>
 
 </div>
+<div class="row" style="margin-top: 50px; margin-bottom: 50px;">
+    <div class="col-md-12">
+        <div class="thumbnail card-glass" style="padding: 40px 0; border: 1px solid rgba(255,255,255,0.1);">
+            <div class="row text-center">
+                
+                <div class="col-md-3 col-xs-6" style="margin-bottom: 20px;">
+                    <h2 class="count-number" data-count="553" style="font-family: 'Montserrat', sans-serif; font-size: 4em; font-weight: 800; color: #fff; margin: 0;">0</h2>
+                    <p style="color: #f4a000; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px;">Mahasiswa Aktif</p>
+                </div>
+
+                <div class="col-md-3 col-xs-6" style="margin-bottom: 20px;">
+                    <h2 class="count-number" data-count="549" style="font-family: 'Montserrat', sans-serif; font-size: 4em; font-weight: 800; color: #fff; margin: 0;">0</h2>
+                    <p style="color: #f4a000; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px;">Alumni</p>
+                </div>
+
+                <div class="col-md-3 col-xs-6" style="margin-bottom: 20px;">
+                    <h2 class="count-number" data-count="21" style="font-family: 'Montserrat', sans-serif; font-size: 4em; font-weight: 800; color: #fff; margin: 0;">0</h2>
+                    <p style="color: #f4a000; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px;">Dosen Pengajar</p>
+                </div>
+
+                <div class="col-md-3 col-xs-6" style="margin-bottom: 20px;">
+                    <h2 class="count-number" data-count="171" style="font-family: 'Montserrat', sans-serif; font-size: 4em; font-weight: 800; color: #fff; margin: 0;">0</h2>
+                    <p style="color: #f4a000; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-top: 10px;">Hak Cipta / HAKI</p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const counters = document.querySelectorAll('.count-number');
+        const speed = 200; // Semakin kecil semakin cepat
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-count');
+                const count = +counter.innerText;
+                const inc = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + inc);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+            updateCount();
+        });
+    });
+</script>
 
 {% endblock %}
