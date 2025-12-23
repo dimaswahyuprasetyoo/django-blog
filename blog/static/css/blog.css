@@ -4,11 +4,11 @@
    ========================================= */
 
 /* --- IMPORTS --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap" rel="stylesheet');
-
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 
 :root {
     --primary-color: #0A84FF;
+    --ums-gold: #f4a000; /* Warna Aksen Emas/Oranye UMS */
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: 1px solid rgba(255, 255, 255, 0.1);
     --font-heading: 'Montserrat', sans-serif;
@@ -18,7 +18,7 @@
 
 /* --- DASAR (RESET & BACKGROUND) --- */
 * {
-    box-sizing: border-box; /* Memastikan padding tidak menambah lebar elemen */
+    box-sizing: border-box;
 }
 
 body {
@@ -31,7 +31,7 @@ body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    overflow-x: hidden; /* Mencegah scroll horizontal tidak sengaja */
+    overflow-x: hidden;
 }
 
 a {
@@ -69,7 +69,7 @@ img {
     -webkit-background-clip: text; 
     background-clip: text;
     -webkit-text-fill-color: transparent;
-    color: #fff; /* Fallback */
+    color: #fff;
 }
 
 .top-menu { 
@@ -96,7 +96,7 @@ img {
     display: flex; 
     flex-direction: column; 
     height: 100%;
-    padding: 0; /* Reset padding bawaan bootstrap thumbnail jika ada */
+    padding: 0;
 }
 
 .thumbnail.card-glass:hover { 
@@ -202,7 +202,6 @@ img {
     margin-bottom: 50px;
 }
 
-/* Header Gambar di Detail */
 .detail-image-header { 
     position: relative; 
     width: 100%; 
@@ -356,7 +355,6 @@ img {
     margin-right: 10px; 
 }
 
-/* Style Balasan (Reply) */
 .comment-thread.reply { 
     margin-left: 50px; 
     margin-top: -10px; 
@@ -381,7 +379,6 @@ img {
     color: var(--primary-color); 
 }
 
-/* Action Bar di Bawah Komentar */
 .comment-actions { 
     margin-top: 10px; 
     display: flex; 
@@ -407,13 +404,12 @@ img {
     color: #ff4d4d; 
 }
 
-/* 3. REACTION POP-UP (THE MAGIC PART) */
+/* 3. REACTION POP-UP */
 .reaction-container { 
     position: relative; 
     margin-left: auto; 
 }
 
-/* Tombol Pemicu */
 .react-trigger-btn {
     background: transparent; 
     border: none; 
@@ -438,7 +434,6 @@ img {
     margin-left: 5px; 
 }
 
-/* Menu Pop-up */
 .reaction-popup {
     display: none; 
     position: absolute; 
@@ -451,7 +446,7 @@ img {
     gap: 5px; 
     box-shadow: 0 5px 15px rgba(0,0,0,0.5);
     white-space: nowrap; 
-    z-index: 100; /* Ditingkatkan agar tidak tertutup */
+    z-index: 100; 
     animation: popUpAnim 0.2s ease-out;
 }
 
@@ -504,7 +499,6 @@ img {
     color: #fff; 
 }
 
-/* FIX: Input Style yang lebih aman (tidak merusak checkbox/radio) */
 .login-container input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
 input[type="text"],
 input[type="email"],
@@ -586,7 +580,6 @@ input[type="password"] {
     letter-spacing: 1px;
 }
 
-/* Override spesifik untuk form modern */
 .modern-form input[type="text"],
 .modern-form input[type="email"],
 .modern-form textarea {
@@ -700,10 +693,9 @@ input[type="file"]::-webkit-file-upload-button:hover {
 }
 
 /* =========================================================
-   NEW: LANDING PAGE & ABOUT (BOOTSTRAP OVERRIDES)
+   BOOTSTRAP OVERRIDES (JUMBOTRON, PANELS, ETC)
    ========================================================= */
 
-/* 1. Jumbotron Transparan */
 .jumbotron {
     background-color: var(--glass-bg) !important;
     border: var(--glass-border);
@@ -723,7 +715,6 @@ input[type="file"]::-webkit-file-upload-button:hover {
     color: rgba(255,255,255,0.8);
 }
 
-/* 2. Thumbnail Transparan */
 .thumbnail {
     background-color: var(--glass-bg) !important;
     border: var(--glass-border) !important;
@@ -743,7 +734,6 @@ input[type="file"]::-webkit-file-upload-button:hover {
     color: rgba(255,255,255,0.7);
 }
 
-/* 3. Panel Transparan */
 .panel {
     background-color: transparent !important;
     border: none !important;
@@ -779,12 +769,11 @@ blockquote {
     font-size: 1rem;
 }
 
-/* 4. Menu Navigasi Custom */
 .navbar-custom {
     background-color: rgba(255,255,255,0.05) !important;
     border-bottom: var(--glass-border) !important;
     border-radius: 50px;
-    display: inline-block; /* Sesuai asli */
+    display: inline-block;
     padding: 10px 30px !important;
     box-sizing: border-box;
 }
@@ -802,64 +791,65 @@ blockquote {
     text-decoration: none;
 }
 
-/* Style Khusus untuk Judul Utama (Hero Section) */
-.hero-container {
+/* =========================================
+   --- NEW: HERO SECTION (FRONT PAGE) ---
+   Menggunakan Font Montserrat Extra Bold (800)
+   ========================================= */
+
+.hero-wrapper {
     text-align: center;
-    padding: 60px 20px;
-    /* Efek Glass yang lebih rapi */
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    border-radius: 20px;
+    padding: 80px 20px;
     margin-top: 40px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    margin-bottom: 40px;
+    /* Glass Effect yang lebih smooth */
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: var(--glass-border);
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.3);
 }
 
-.hero-small-text {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.2em;
-    font-weight: 300;
-    letter-spacing: 2px;
-    color: #f4a000; /* Warna Emas UMS */
+.hero-welcome {
+    font-family: var(--font-heading);
+    font-weight: 400; /* Regular */
+    font-size: 1.5rem;
+    color: var(--ums-gold); /* Menggunakan variabel warna Emas */
+    margin-bottom: 10px;
+    letter-spacing: 1px;
     text-transform: uppercase;
-    margin-bottom: 5px;
 }
 
-.hero-main-title {
-    font-family: 'Poppins', sans-serif;
-    font-size: 4.5em; /* Ukuran Besar */
-    font-weight: 900; /* Paling Tebal */
-    color: #fff;
-    margin: 10px 0;
+.hero-title {
+    font-family: var(--font-heading);
+    font-weight: 800; /* Extra Bold - Sangat Tebal */
+    font-size: 5rem; /* Ukuran Besar */
+    color: #ffffff;
+    margin: 0 0 20px 0;
     line-height: 1.1;
-    text-transform: capitalize;
-    /* Efek Text Shadow biar pop-up */
-    text-shadow: 0 4px 8px rgba(0,0,0,0.5); 
+    /* Shadow agar teks menonjol */
+    text-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
 
 .hero-subtitle {
-    font-family: 'Montserrat', sans-serif; /* Tetap pakai Montserrat untuk deskripsi */
-    font-size: 1.3em;
+    font-family: var(--font-heading);
     font-weight: 400;
-    color: rgba(255,255,255,0.85);
-    margin-top: 15px;
-    margin-bottom: 30px;
-    max-width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.85);
+    margin-bottom: 40px;
+    display: inline-block;
+    border-top: 1px solid rgba(255,255,255,0.2); /* Garis pemisah tipis */
+    padding-top: 20px;
+    max-width: 80%;
 }
 
-/* Update Tombol Biar Fontnya nyambung */
 .btn-hero {
-    font-family: 'Poppins', sans-serif;
+    font-family: var(--font-heading);
     font-weight: 600;
-    padding: 12px 30px;
-    font-size: 1.1em;
-    border-radius: 8px;
-    margin: 0 5px;
-    transition: transform 0.2s;
-}
-
-.btn-hero:hover {
-    transform: translateY(-3px);
+    text-transform: uppercase;
+    padding: 12px 35px;
+    font-size: 1rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    margin: 0 10px;
 }
