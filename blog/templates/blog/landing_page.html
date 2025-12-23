@@ -1,28 +1,69 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="jumbotron text-center" style="background-color: white; border: 1px solid #ddd; padding: 40px;">
-    <h2>Selamat Datang di Website Prodi</h2>
-    <h1>Pendidikan Informatika</h1>
-    <hr>
-    <p class="lead">Mewujudkan Pendidik Generasi Digital yang Berkarakter dan Kompeten.</p>
-    <br>
-    <a href="{% url 'post_list' %}" class="btn btn-primary btn-lg">Lihat Berita Terbaru</a>
-    <a href="{% url 'about_page' %}" class="btn btn-default btn-lg">Profil Prodi</a>
+
+<div class="hero-wrapper">
+    <div class="hero-welcome">Selamat Datang di Website Prodi</div>
+    
+    <h1 class="hero-title">Pendidikan Informatika</h1>
+    
+    <div class="hero-subtitle">
+        Mewujudkan Pendidik Generasi Digital yang Berkarakter, Kompeten, dan Islami.
+    </div>
+    
+    <div style="margin-top: 30px;">
+        <a href="{% url 'post_list' %}" class="btn btn-primary btn-hero">
+            <span class="glyphicon glyphicon-fire"></span> Lihat Berita Terbaru
+        </a>
+        <a href="{% url 'about_page' %}" class="btn btn-default btn-hero" style="background: #fff; color: #333; border: none;">
+            <span class="glyphicon glyphicon-user"></span> Profil Prodi
+        </a>
+    </div>
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h3>Visi Akademik</h3>
-        <p>Mengembangkan kurikulum berbasis teknologi terkini untuk menghadapi tantangan industri 4.0 di dunia pendidikan.</p>
+<div class="row" style="margin-top: 80px; margin-bottom: 50px;">
+    
+    <div class="col-md-12 text-center" style="margin-bottom: 40px;">
+        <h3 style="color: #f4a000; font-weight: bold; letter-spacing: 2px; text-transform: uppercase;">Keunggulan Kami</h3>
+        <div style="width: 60px; height: 3px; background: #f4a000; margin: 10px auto;"></div>
     </div>
+
     <div class="col-md-4">
-        <h3>Pengajar Profesional</h3>
-        <p>Didukung oleh dosen-dosen berpengalaman dan praktisi ahli di bidang Rekayasa Perangkat Lunak dan Jaringan.</p>
+        <div class="thumbnail card-glass" style="padding: 40px 20px; text-align: center; height: 100%; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="margin-bottom: 20px;">
+                <span class="glyphicon glyphicon-education" style="font-size: 3.5em; color: #0A84FF;"></span>
+            </div>
+            <h3 style="font-weight: 800; color: #fff; margin-bottom: 15px;">Visi Akademik</h3>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.1em; line-height: 1.6;">
+                Mencetak tenaga pendidik profesional yang unggul dalam teknologi pembelajaran multimedia berlandaskan nilai-nilai keislaman.
+            </p>
+        </div>
     </div>
+
     <div class="col-md-4">
-        <h3>Fasilitas Lengkap</h3>
-        <p>Laboratorium komputer modern, akses internet cepat, dan ruang pembelajaran multimedia.</p>
+        <div class="thumbnail card-glass" style="padding: 40px 20px; text-align: center; height: 100%; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="margin-bottom: 20px;">
+                <span class="glyphicon glyphicon-briefcase" style="font-size: 3.5em; color: #f4a000;"></span>
+            </div>
+            <h3 style="font-weight: 800; color: #fff; margin-bottom: 15px;">Dosen Kompeten</h3>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.1em; line-height: 1.6;">
+                Didukung oleh dosen berpengalaman (S2/S3) dan praktisi ahli di bidang Rekayasa Perangkat Lunak, Jaringan, dan Pedagogik.
+            </p>
+        </div>
     </div>
+
+    <div class="col-md-4">
+        <div class="thumbnail card-glass" style="padding: 40px 20px; text-align: center; height: 100%; border: 1px solid rgba(255,255,255,0.1);">
+            <div style="margin-bottom: 20px;">
+                <span class="glyphicon glyphicon-hdd" style="font-size: 3.5em; color: #0A84FF;"></span>
+            </div>
+            <h3 style="font-weight: 800; color: #fff; margin-bottom: 15px;">Fasilitas Lengkap</h3>
+            <p style="color: rgba(255,255,255,0.7); font-size: 1.1em; line-height: 1.6;">
+                Laboratorium komputer modern, akses internet cepat, Lab Multimedia, dan Lab Microteaching untuk praktik mengajar.
+            </p>
+        </div>
+    </div>
+
 </div>
+
 {% endblock %}
