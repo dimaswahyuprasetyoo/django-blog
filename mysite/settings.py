@@ -9,19 +9,8 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+
 from pathlib import Path
-import os
-import sys
-
-path = '/home/dimaswahyuprasetyo/django-blog'
-if path not in sys.path:
-    sys.path.append(path)
-
-os.environ['DJANGO_SETTINGS_MODULE'] = 'mysite.settings'
-
-from django.core.wsgi import get_wsgi_application
-application = get_wsgi_application()
-
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -36,7 +25,7 @@ SECRET_KEY = 'django-insecure-^$jg93a9$otx0=c$i9)q4w@=ng(xpd1w0sl%)v1t#-do2=dg=-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dimaswahyuprasetyo.pythonanywhere.com']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -44,12 +33,12 @@ ALLOWED_HOSTS = ['dimaswahyuprasetyo.pythonanywhere.com']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',  # <--- PASTIKAN BARIS INI ADA!
+    'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'tinymce',
+    'tinymce', # 1. Tambahkan ini
 ]
 
 MIDDLEWARE = [
@@ -128,8 +117,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
