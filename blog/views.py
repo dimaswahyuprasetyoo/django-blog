@@ -7,7 +7,7 @@ from django.contrib.auth import logout
 from django.http import JsonResponse
 
 # ==========================================
-# BAGIAN BARU: HALAMAN PRODI (LANDING & ABOUT)
+# HALAMAN PRODI
 # ==========================================
 
 def landing_page(request):
@@ -17,11 +17,10 @@ def about_page(request):
     return render(request, 'blog/about.html')
 
 # ==========================================
-# BAGIAN LAMA: BERITA / BLOG (TIDAK ADA YANG DIHAPUS)
+# BERITA & BLOG (CRUD LENGKAP)
 # ==========================================
 
 def post_list(request):
-    # Halaman ini sekarang akan diakses via /berita/
     posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
     return render(request, 'blog/post_list.html', {'posts': posts})
 
@@ -58,8 +57,14 @@ def post_edit(request, pk):
         form = PostForm(instance=post)
     return render(request, 'blog/post_edit.html', {'form': form, 'post': post})
 
+@login_required
+def post_remove(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    post.delete()
+    return redirect('post_list')
+
 # ==========================================
-# BAGIAN LAMA: KOMENTAR & REAKSI
+# KOMENTAR & REAKSI
 # ==========================================
 
 def add_comment_to_post(request, pk):

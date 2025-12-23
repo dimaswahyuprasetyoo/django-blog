@@ -22,8 +22,14 @@
 
         <div class="detail-content">
             {% if user.is_authenticated %}
-                <div class="admin-actions">
-                    <a class="btn btn-glass-sm" href="{% url 'post_edit' pk=post.pk %}">✎ Edit Post</a>
+                <div class="admin-actions" style="margin-bottom: 20px; text-align: right;">
+                    <a class="btn btn-glass-sm" href="{% url 'post_edit' pk=post.pk %}" style="margin-right: 5px;">
+                        ✎ Edit Post
+                    </a>
+                    
+                    <a class="btn btn-glass-sm" href="{% url 'post_remove' pk=post.pk %}" onclick="return confirm('Yakin ingin menghapus postingan ini?')" style="background: rgba(255, 0, 0, 0.2); border-color: rgba(255,0,0,0.4); color: #ff9999;">
+                        🗑 Hapus Post
+                    </a>
                 </div>
             {% endif %}
 
@@ -128,20 +134,16 @@
 
     <script>
         function sendReaction(commentId, type, btnElement) {
-            // Efek klik
             btnElement.style.transform = "scale(1.3)";
             setTimeout(() => btnElement.style.transform = "scale(1)", 200);
 
-            // Kirim ke server
             fetch(`/comment/${commentId}/react/${type}/`)
             .then(response => response.json())
             .then(data => {
                 if (data.status === 'success') {
-                    // Update angka spesifik di dalam pop-up
                     const countSpan = btnElement.querySelector('.c');
                     countSpan.innerText = data.new_count;
                     
-                    // Update angka total di tombol pemicu (opsional, logika sederhana)
                     const totalSpan = document.getElementById(`count-${commentId}`);
                     let currentTotal = parseInt(totalSpan.innerText) || 0;
                     totalSpan.innerText = currentTotal + 1;

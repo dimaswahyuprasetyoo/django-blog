@@ -18,15 +18,13 @@
                 margin: 0; 
                 padding: 0;
                 font-family: 'Montserrat', sans-serif;
-                /* BACKGROUND GELAP / GAMBAR */
                 background: linear-gradient(rgba(0, 46, 91, 0.85), rgba(0, 0, 0, 0.9)), 
                             url('https://images.unsplash.com/photo-1562774053-701939374585?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
                 background-size: cover;
-                color: white; /* Teks Default Putih */
+                color: white; 
                 min-height: 100vh;
             }
 
-            /* Header Style Original (Transparan) */
             .page-header {
                 display: flex;
                 justify-content: space-between;
@@ -34,8 +32,8 @@
                 padding: 20px 40px;
                 margin-top: 0;
                 margin-bottom: 40px;
-                border-bottom: 1px solid rgba(255,255,255,0.15); /* Border tipis */
-                background: rgba(0,0,0,0.2); /* Sedikit gelap biar menu terbaca */
+                border-bottom: 1px solid rgba(255,255,255,0.15); 
+                background: rgba(0,0,0,0.2); 
             }
 
             .header-branding {
@@ -58,7 +56,7 @@
             }
 
             .header-subtitle {
-                color: #f4a000; /* Tetap pakai Oranye UMS biar kontras */
+                color: #f4a000; 
                 font-size: 0.9rem;
                 font-weight: 600;
                 text-transform: uppercase;
@@ -73,7 +71,6 @@
                 gap: 20px;
             }
 
-            /* Navigasi Glass Style (Original Code) */
             .nav-pills-glass {
                 display: flex;
                 gap: 15px;
@@ -118,10 +115,9 @@
                 gap: 15px;
             }
 
-            /* Class tambahan buat konten biar kebaca di background gelap */
             .glass-panel {
-                background: rgba(255, 255, 255, 0.1); /* Putih transparan */
-                backdrop-filter: blur(10px); /* Efek blur (hanya browser modern) */
+                background: rgba(255, 255, 255, 0.1); 
+                backdrop-filter: blur(10px); 
                 border: 1px solid rgba(255, 255, 255, 0.2);
                 border-radius: 15px;
                 padding: 25px;
@@ -150,6 +146,11 @@
                 {% if user.is_authenticated %}
                     <div class="user-info">
                         <span>Halo, <strong>{{ user.username }}</strong></span>
+                        
+                        <a href="{% url 'post_new' %}" style="color: #fff; border: 1px solid #fff; padding: 5px 15px; border-radius: 20px; text-decoration: none; margin-left: 10px; font-size: 0.9rem;">
+                            <i class="fa fa-plus"></i> New Post
+                        </a>
+
                         <a href="{% url 'logout' %}" style="color: #ff6b6b; margin-left:10px;">Log out</a>
                     </div>
                 {% else %}
