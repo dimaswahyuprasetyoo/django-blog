@@ -44,12 +44,12 @@ ALLOWED_HOSTS = ['dimaswahyuprasetyo.pythonanywhere.com']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    'django.contrib.contenttypes',
+    'django.contrib.contenttypes',  # <--- PASTIKAN BARIS INI ADA!
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blog',
-    'tinymce', # 1. Tambahkan ini
+    'tinymce',
 ]
 
 MIDDLEWARE = [
