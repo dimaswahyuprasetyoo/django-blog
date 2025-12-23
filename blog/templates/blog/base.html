@@ -5,50 +5,151 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Pendidikan Informatika FKIP</title>
+        
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        
+        <link href="//fonts.googleapis.com/css?family=Montserrat:wght@400;600;800&display=swap" rel="stylesheet" type="text/css">
         <link href="//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+        
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
         
         <style>
-            .nav-menu {
-                margin-top: 10px;
-                padding: 10px;
-                background-color: #f5f5f5;
-                border-radius: 5px;
-                text-align: center;
+            /* Reset Margin Body agar Full Screen */
+            body { margin: 0; padding: 0; }
+
+            /* Penataan Ulang Header agar Rapi */
+            .page-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 20px 40px;
+                margin-top: 0;
+                margin-bottom: 40px;
+                border-bottom: 1px solid rgba(255,255,255,0.1);
             }
-            .nav-menu a {
-                margin: 0 15px;
-                font-size: 18px;
+
+            /* Container Kiri (Judul & Fakultas) */
+            .header-branding {
+                display: flex;
+                flex-direction: column;
+            }
+
+            .header-branding h1 {
+                margin: 0;
+                font-size: 1.8rem;
+                font-weight: 800;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .header-branding h1 a {
+                text-decoration: none;
+                background: linear-gradient(to right, #fff, #0A84FF);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+            }
+
+            /* Style Baru untuk Teks Fakultas */
+            .header-subtitle {
+                color: #FF9F0A; /* Warna Oranye FKIP */
+                font-size: 0.9rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                margin-top: 5px;
+                font-family: 'Montserrat', sans-serif;
+            }
+
+            /* Container Kanan (Menu & Login) */
+            .header-actions {
+                display: flex;
+                align-items: center;
+                gap: 20px;
+            }
+
+            /* Style Menu (Home, About, Berita) menjadi Tombol/Pill */
+            .nav-pills-glass {
+                display: flex;
+                gap: 10px;
+            }
+
+            .nav-pills-glass a {
+                color: rgba(255,255,255,0.8);
+                font-weight: 600;
+                text-decoration: none;
+                padding: 8px 20px;
+                border-radius: 50px;
+                transition: all 0.3s ease;
+                font-size: 1rem;
+                text-transform: uppercase;
+            }
+
+            .nav-pills-glass a:hover {
+                background: rgba(255,255,255,0.1);
+                color: #0A84FF;
+                box-shadow: 0 0 10px rgba(10, 132, 255, 0.3);
+            }
+
+            /* Style Tombol Login yang Digedekan */
+            .btn-login-big {
+                background: linear-gradient(45deg, #0A84FF, #0055b3);
+                color: white !important;
+                padding: 12px 35px; /* Padding lebih besar */
+                border-radius: 12px;
                 font-weight: bold;
-                color: #8da1b6; /* Menyesuaikan warna tema lama */
+                font-size: 1.1rem; /* Ukuran font lebih besar */
+                text-decoration: none;
+                box-shadow: 0 4px 15px rgba(10, 132, 255, 0.4);
+                transition: transform 0.2s;
+                border: 1px solid rgba(255,255,255,0.2);
+            }
+
+            .btn-login-big:hover {
+                transform: scale(1.05);
+                box-shadow: 0 6px 20px rgba(10, 132, 255, 0.6);
                 text-decoration: none;
             }
-            .nav-menu a:hover {
-                color: #2c3e50;
-                text-decoration: underline;
+
+            /* Style User Info (jika sudah login) */
+            .user-info {
+                color: white;
+                font-size: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 15px;
             }
         </style>
     </head>
+    
     <body>
         <div class="page-header">
-            <div style="float: right;">
-                {% if user.is_authenticated %}
-                    <span class="top-menu" style="font-weight: normal; font-size: 14pt;">Hello {{ user.username }} (<a href="{% url 'logout' %}" style="color: #337ab7;">Log out</a>)</span>
-                    <a href="{% url 'post_new' %}" class="top-menu" style="border: 1px solid #fff; padding: 5px 10px; border-radius: 4px;">+ New</a>
-                {% else %}
-                    <a href="{% url 'login' %}" class="top-menu">Login</a>
-                {% endif %}
+            
+            <div class="header-branding">
+                <h1><a href="{% url 'landing_page' %}">Pendidikan Teknik Informatika</a></h1>
+                <div class="header-subtitle">Fakultas Keguruan dan Ilmu Pendidikan</div>
             </div>
-            
-            <h1><a href="{% url 'landing_page' %}">Pendidikan Informatika</a></h1>
-            <p style="color: white; font-size: 1.2em; padding-left: 20px;">Fakultas Keguruan dan Ilmu Pendidikan (FKIP)</p>
-            
-            <div class="nav-menu">
-                <a href="{% url 'landing_page' %}">Home</a>
-                <a href="{% url 'about_page' %}">About</a>
-                <a href="{% url 'post_list' %}">Berita & Artikel</a>
+
+            <div class="header-actions">
+                
+                <nav class="nav-pills-glass">
+                    <a href="{% url 'landing_page' %}">Home</a>
+                    <a href="{% url 'about_page' %}">About</a>
+                    <a href="{% url 'post_list' %}">Berita & Artikel</a>
+                </nav>
+
+                <div style="width: 1px; height: 30px; background: rgba(255,255,255,0.2);"></div>
+
+                {% if user.is_authenticated %}
+                    <div class="user-info">
+                        <span>Halo, <strong>{{ user.username }}</strong></span>
+                        <a href="{% url 'post_new' %}" class="btn-glass" style="font-size: 0.9rem; padding: 5px 15px; border: 1px solid #fff; border-radius: 20px;">+ New</a>
+                        <a href="{% url 'logout' %}" style="color: #ff4d4d; font-weight: bold;">Log out</a>
+                    </div>
+                {% else %}
+                    <a href="{% url 'login' %}" class="btn-login-big">LOGIN</a>
+                {% endif %}
+                
             </div>
         </div>
         
