@@ -76,6 +76,7 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 
 # mysite/settings.py
 
+# mysite/settings.py
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -156,5 +157,6 @@ TINYMCE_DEFAULT_CONFIG = {
     'menubar': True,
     'statusbar': True,
 }
-from django.db.backends.mysql.base import DatabaseWrapper
-DatabaseWrapper.browser_version_supported = lambda self: True
+# GANTI BAGIAN PALING BAWAH DENGAN INI:
+from django.db.backends.base.base import BaseDatabaseWrapper
+BaseDatabaseWrapper.check_database_version_supported = lambda self: None
